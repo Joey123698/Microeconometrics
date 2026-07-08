@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Lịch ôn thi Microeconometrics — 22/07/2026</title>
+<!-- Firebase SDK (compat — dùng được trực tiếp bằng thẻ script, không cần build tool) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 <style>
   :root{
     --ink:#14213D; --ink-2:#1D2E52; --paper:#FAF8F4; --card:#FFFFFF; --line:#E4E1D8;
@@ -65,6 +69,14 @@
   .reminder-warn .rtxt{flex:1;font-size:13.5px;color:#7A4E0A;min-width:220px;}
   .reminder-ok{background:#EAF7EE;border:2px solid #8FD3A6;border-radius:14px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:#0F6B31;}
   .notif-status{font-size:12px;font-family:ui-monospace,monospace;background:#fff;border:1px solid #E5D0A8;padding:6px 12px;border-radius:999px;color:#7A4E0A;white-space:nowrap;}
+
+  .sync-panel{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#FFF8E8;border:2px solid #F4C95D;border-radius:14px;padding:14px 18px;margin-bottom:20px;}
+  .sync-panel .icon{font-size:22px;}
+  .sync-panel .stxt{flex:1;font-size:13px;color:#6B4E00;min-width:220px;line-height:1.5;}
+  .sync-panel .semail{font-weight:700;}
+  .btn-google{background:#fff;border:1px solid #DADCE0;color:#3C4043;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  .btn-google:hover{background:#F7F8F8;}
+  .sync-off{font-size:12px;color:#8A6D00;}
 
   .legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
   .legend-item{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:7px 13px 7px 10px;border-radius:999px;font-size:12.5px;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.03);}
@@ -170,6 +182,7 @@
 
 <div class="wrap">
   <div id="reminderBanner"></div>
+  <div id="syncPanel"></div>
 
   <div class="algo-note" style="border-color:#F3B4B4;background:#FDEAEA;color:#7A2020;">
     🔁 <b>Đã tái cấu trúc lịch:</b> vì bỏ lỡ 03/07, toàn bộ nội dung ngày đó (đọc lý thuyết 1.1–1.3, diễn giải hệ số, flashcard Λ/Φ) đã được <b>gộp vào 04/07</b> — biến ngày 04/07 thành ngày học <b>gấp đôi khối lượng</b>. Từ 05/07 trở đi, lịch trở lại nhịp độ bình thường nhưng vẫn giữ nguyên yêu cầu ôn tập bắt buộc mỗi ngày. Hãy dành nhiều thời gian hơn cho riêng ngày 04/07.
@@ -246,11 +259,157 @@ const Store = {
   async set(key, value){
     Store._mem[key] = value;
     try{
-      if (window.storage) { await window.storage.set(key, JSON.stringify(value), false); return; }
+      if (window.storage) { await window.storage.set(key, JSON.stringify(value), false); scheduleFirestoreSync(); return; }
     } catch(e) {}
     try{ localStorage.setItem(LS_PREFIX+key, JSON.stringify(value)); } catch(e) {}
+    scheduleFirestoreSync(); // đồng bộ lên Firebase (debounce) nếu đã đăng nhập
   }
 };
+
+/* ============================= FIREBASE — ĐỒNG BỘ NHIỀU THIẾT BỊ ============================= */
+// ⚠️ BẮT BUỘC: dán config dự án Firebase CỦA BẠN vào đây (lấy từ Firebase Console > Project settings > Web app).
+// Nếu để nguyên giá trị mặc định "YOUR_API_KEY", web vẫn chạy bình thường nhưng chỉ lưu cục bộ (không đồng bộ đa thiết bị).
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+let fbAuth = null, fbDb = null, fbUser = null, firebaseReady = false;
+let fsSyncTimer = null, fsUnsubscribe = null, fsApplyingRemote = false;
+
+function initFirebase(){
+  try {
+    if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
+      firebaseReady = false;
+      return;
+    }
+    firebase.initializeApp(firebaseConfig);
+    fbAuth = firebase.auth();
+    fbDb = firebase.firestore();
+    firebaseReady = true;
+    fbAuth.onAuthStateChanged(handleAuthChange);
+  } catch(e) {
+    console.error("Firebase init error:", e);
+    firebaseReady = false;
+  }
+}
+
+function fsDocRef(){
+  return fbDb.collection('users').doc(fbUser.uid).collection('studyPlan').doc('state');
+}
+
+async function handleAuthChange(user){
+  fbUser = user;
+  renderSyncPanel();
+  if (user) {
+    await loadFromFirestore();
+    CARDS.forEach(ensureCard);
+    selectedDate = computeTodayJulyDay();
+    renderCalendar();
+    renderDetail();
+    setupFirestoreListener();
+    showToast('✅ Đã đăng nhập — dữ liệu sẽ đồng bộ trên mọi thiết bị.');
+  } else {
+    if (fsUnsubscribe) { fsUnsubscribe(); fsUnsubscribe = null; }
+  }
+}
+
+async function loadFromFirestore(){
+  try {
+    const snap = await fsDocRef().get();
+    if (snap.exists) {
+      const data = snap.data();
+      doneState = data.doneState || {};
+      cardState = data.cardState || {};
+      completedDates = data.completedDates || {};
+      Store._mem['srs-done'] = doneState;
+      Store._mem['srs-cardstate'] = cardState;
+      Store._mem['srs-completed'] = completedDates;
+      try{ localStorage.setItem(LS_PREFIX+'srs-done', JSON.stringify(doneState)); }catch(e){}
+      try{ localStorage.setItem(LS_PREFIX+'srs-cardstate', JSON.stringify(cardState)); }catch(e){}
+      try{ localStorage.setItem(LS_PREFIX+'srs-completed', JSON.stringify(completedDates)); }catch(e){}
+    } else {
+      // Chưa có dữ liệu trên mây -> đẩy dữ liệu cục bộ hiện tại lên làm bản gốc
+      await saveToFirestore();
+    }
+  } catch(e) { console.error("Lỗi tải từ Firestore:", e); showToast('⚠️ Không tải được dữ liệu từ Firebase.'); }
+}
+
+async function saveToFirestore(){
+  if (!fbUser || fsApplyingRemote) return;
+  try {
+    await fsDocRef().set({
+      doneState, cardState, completedDates,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch(e) { console.error("Lỗi lưu lên Firestore:", e); }
+}
+
+function scheduleFirestoreSync(){
+  if (!fbUser) return;
+  clearTimeout(fsSyncTimer);
+  fsSyncTimer = setTimeout(saveToFirestore, 900); // gộp các lần lưu liên tiếp lại, tránh ghi quá nhiều lần
+}
+
+function setupFirestoreListener(){
+  if (fsUnsubscribe) fsUnsubscribe();
+  fsUnsubscribe = fsDocRef().onSnapshot(snap => {
+    if (!snap.exists) return;
+    const data = snap.data();
+    fsApplyingRemote = true;
+    doneState = data.doneState || doneState;
+    cardState = data.cardState || cardState;
+    completedDates = data.completedDates || completedDates;
+    if (!(session && session.date === selectedDate)) {
+      renderCalendar();
+      renderDetail();
+    }
+    fsApplyingRemote = false;
+  });
+}
+
+async function signInWithGoogle(){
+  if (!firebaseReady) { showToast('⚠️ Chưa cấu hình Firebase trong file này — xem hướng dẫn ở phần chat.'); return; }
+  const provider = new firebase.auth.GoogleAuthProvider();
+  try { await fbAuth.signInWithPopup(provider); }
+  catch(e) { showToast('⚠️ Đăng nhập thất bại: ' + e.message); }
+}
+
+async function signOutFirebase(){
+  if (fbAuth) await fbAuth.signOut();
+  showToast('👋 Đã đăng xuất — quay về lưu trữ cục bộ trên thiết bị này.');
+}
+
+function renderSyncPanel(){
+  const el = document.getElementById('syncPanel');
+  if (!firebaseReady) {
+    el.innerHTML = `<div class="sync-panel">
+      <div class="icon">☁️</div>
+      <div class="stxt"><b>Đồng bộ nhiều thiết bị:</b> chưa được cấu hình. Dán Firebase config của bạn vào biến <code>firebaseConfig</code> đầu file để bật tính năng này — hiện tại dữ liệu chỉ lưu trên thiết bị này.</div>
+      <span class="sync-off">⚙️ Chưa cấu hình</span>
+    </div>`;
+    return;
+  }
+  if (fbUser) {
+    el.innerHTML = `<div class="sync-panel" style="background:#EAF7EE;border-color:#8FD3A6;">
+      <div class="icon">☁️✅</div>
+      <div class="stxt">Đã đăng nhập với <span class="semail">${fbUser.email || fbUser.displayName || 'tài khoản Google'}</span> — tiến độ đang đồng bộ tự động trên mọi thiết bị.</div>
+      <button class="btn btn-ghost" id="btnSignOut">Đăng xuất</button>
+    </div>`;
+    document.getElementById('btnSignOut').addEventListener('click', signOutFirebase);
+  } else {
+    el.innerHTML = `<div class="sync-panel">
+      <div class="icon">☁️</div>
+      <div class="stxt"><b>Đồng bộ nhiều thiết bị:</b> đăng nhập bằng Google để tiến độ (streak, MIT đã tick, thẻ SRS) tự động khớp trên điện thoại, laptop... đều thấy giống nhau.</div>
+      <button class="btn btn-google" id="btnSignIn"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4c-7.7 0-14.4 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.4 0 10.3-1.8 14-5.1l-6.5-5.5C29.4 35.1 26.8 36 24 36c-5.3 0-9.7-3.3-11.3-8H6v6.2C9.3 40 16.1 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 3-3.2 5.3-6 6.7l6.5 5.5C40 36.6 44 30.9 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>Đăng nhập với Google</button>
+    </div>`;
+    document.getElementById('btnSignIn').addEventListener('click', signInWithGoogle);
+  }
+}
 
 /* ============================= STATIC CALENDAR DATA ============================= */
 const PHASES = {
@@ -1011,6 +1170,8 @@ function renderReminderBanner(){
   selectedDate = computeTodayJulyDay();
   renderCalendar();
   renderDetail();
+  initFirebase();       // nếu đã cấu hình firebaseConfig, sẽ tự bắt sự kiện đăng nhập và đồng bộ
+  renderSyncPanel();
   // Kiểm tra lại định kỳ mỗi giờ (chỉ khi tab vẫn đang mở) và nhắc qua Notification nếu còn thiếu
   setInterval(()=>{ checkAndNotifyToday(false); renderReminderBanner(); }, 60*60*1000);
 })();
