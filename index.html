@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lịch ôn thi Microeconometrics — 22/07/2026</title>
+<style>
+  :root{
+    --ink:#14213D; --ink-2:#1D2E52; --paper:#FAF8F4; --card:#FFFFFF; --line:#E4E1D8;
+    --text:#22262E; --muted:#6B7280;
+    --p1:#3B6FD6; --p2:#0EA5A0; --p3:#DB2777; --p4:#64748B; --p5:#DC2626; --p6:#84A98C; --exam:#B8860B;
+    --p1-tint:#EAF0FC; --p2-tint:#E4F7F6; --p3-tint:#FCE9F1; --p4-tint:#EEF0F2; --p5-tint:#FDEAEA; --p6-tint:#EEF4EF; --exam-tint:#FBF2DC;
+    --srs:#7C3AED; --srs-tint:#F1EBFC; --good:#16A34A; --bad:#DC2626; --urgent:#DC2626; --urgent-tint:#FDEAEA;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--text);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px;}
+
+  .hero{position:relative;background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 100%);color:#fff;border-radius:0 0 28px 28px;padding:34px 20px 30px;overflow:hidden;margin-bottom:20px;}
+  .hero .greek{position:absolute;font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#fff;opacity:.07;pointer-events:none;user-select:none;}
+  .g1{font-size:220px;top:-60px;right:-20px;} .g2{font-size:120px;bottom:-40px;left:-10px;} .g3{font-size:90px;top:30px;left:46%;}
+  .hero-inner{position:relative;max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .countdown{font-family:Georgia,serif;font-size:84px;font-weight:700;line-height:1;letter-spacing:-2px;}
+  .countdown-label{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:#B9C2DD;margin-top:6px;}
+  .hero-mid{flex:1;min-width:220px;}
+  .hero-title{font-size:24px;font-weight:700;margin:0 0 6px;}
+  .hero-sub{font-size:13.5px;color:#C7CEE3;margin:0;line-height:1.55;}
+  .hero-examdate{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;display:inline-block;margin-top:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12.5px;letter-spacing:.5px;}
+  .streak-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px 18px;text-align:center;min-width:130px;}
+  .streak-num{font-family:Georgia,serif;font-size:34px;font-weight:700;color:#FFD97A;transition:transform .2s ease;}
+  .streak-num.bump{animation:streakBump .6s ease;}
+  @keyframes streakBump{0%{transform:scale(1);}30%{transform:scale(1.5);color:#fff;}100%{transform:scale(1);}}
+
+  /* ---- CONFETTI / FIREWORKS ---- */
+  .confetti-container{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
+  .confetti-piece{position:absolute;top:-24px;border-radius:2px;animation-name:confettiFall;animation-timing-function:cubic-bezier(.35,.6,.6,1);animation-fill-mode:forwards;}
+  @keyframes confettiFall{
+    0%{transform:translateY(0) rotate(0deg);opacity:1;}
+    100%{transform:translateY(105vh) rotate(var(--rot));opacity:0;}
+  }
+  .firework-spark{position:absolute;width:7px;height:7px;border-radius:50%;animation:sparkOut 900ms ease-out forwards;box-shadow:0 0 6px 1px currentColor;}
+  @keyframes sparkOut{
+    0%{transform:translate(0,0) scale(1);opacity:1;}
+    100%{transform:translate(var(--dx),var(--dy)) scale(.15);opacity:0;}
+  }
+
+  /* ---- TOAST ---- */
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);
+    background:var(--ink);color:#fff;padding:13px 22px;border-radius:999px;
+    font-size:13.5px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
+    opacity:0;transition:all .35s ease;z-index:10000;white-space:nowrap;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  .streak-label{font-size:10.5px;letter-spacing:1px;color:#C7CEE3;text-transform:uppercase;margin-top:2px;font-family:ui-monospace,monospace;}
+
+  .srs-banner{display:flex;align-items:center;gap:14px;background:var(--srs-tint);border:1px solid #E0D1FA;border-radius:14px;padding:14px 18px;margin-bottom:14px;flex-wrap:wrap;}
+  .srs-banner .icon{font-size:22px;} .srs-banner .txt{flex:1;font-size:13px;line-height:1.55;color:#3B2A63;min-width:220px;} .srs-banner b{color:var(--srs);}
+  .srs-stat{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;background:#fff;border:1px solid #E0D1FA;padding:6px 12px;border-radius:999px;color:#3B2A63;}
+
+  .algo-note{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--muted);line-height:1.6;}
+  .algo-note code{background:#F1EFEA;padding:1px 5px;border-radius:4px;font-family:ui-monospace,monospace;color:var(--ink);}
+
+  .reminder-warn{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#FFF4E5;border:2px solid #F0B95C;border-radius:14px;padding:14px 18px;margin-bottom:20px;}
+  .reminder-warn .rtxt{flex:1;font-size:13.5px;color:#7A4E0A;min-width:220px;}
+  .reminder-ok{background:#EAF7EE;border:2px solid #8FD3A6;border-radius:14px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:#0F6B31;}
+  .notif-status{font-size:12px;font-family:ui-monospace,monospace;background:#fff;border:1px solid #E5D0A8;padding:6px 12px;border-radius:999px;color:#7A4E0A;white-space:nowrap;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .legend-item{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:7px 13px 7px 10px;border-radius:999px;font-size:12.5px;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .dot{width:10px;height:10px;border-radius:50%;flex:none;}
+
+  .cal-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 2px 10px rgba(20,33,61,.05);}
+  .cal-title{font-size:18px;font-weight:700;margin:2px 4px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+  .cal-title span.sub{font-weight:400;font-size:12.5px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;}
+  .wk-head{text-align:center;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;letter-spacing:1px;color:var(--muted);padding-bottom:4px;text-transform:uppercase;}
+  .day{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;min-height:132px;padding:8px 8px 9px;cursor:default;transition:transform .12s ease,box-shadow .12s ease;}
+  .day.active{cursor:pointer;}
+  .day.active:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(20,33,61,.10);}
+  .day.dim{opacity:.35;}
+  .day.hasdue{border-color:#F3B4B4;}
+  .day .bar{position:absolute;top:0;left:10px;right:10px;height:4px;border-radius:0 0 3px 3px;}
+  .day .num{font-family:Georgia,serif;font-weight:700;font-size:17px;margin-top:6px;display:inline-block;}
+  .day.exam .num{color:var(--exam);}
+  .day .srs-badge{float:right;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10px;background:var(--urgent);color:#fff;border-radius:999px;padding:2px 6px;margin-top:6px;font-weight:700;}
+  .day .done-badge{float:right;font-size:13px;margin-top:5px;}
+  .day .chip{display:block;font-size:10.2px;line-height:1.35;margin-top:4px;padding:3px 6px;border-radius:6px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .day.selected{outline:2px solid var(--ink);outline-offset:1px;}
+  .day .note{font-size:10.5px;color:var(--muted);margin-top:8px;font-style:italic;}
+
+  .detail{margin-top:22px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--ink);border-radius:14px;padding:20px 22px;box-shadow:0 2px 10px rgba(20,33,61,.05);}
+  .detail-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px;}
+  .detail-date{font-family:Georgia,serif;font-weight:700;font-size:22px;}
+  .detail-phase{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;letter-spacing:.5px;padding:3px 10px;border-radius:999px;color:#fff;}
+  .detail-sub{font-size:13px;color:var(--muted);margin:2px 0 14px;}
+
+  /* ---- MANDATORY BANNER ---- */
+  @keyframes pulseBorder{0%{box-shadow:0 0 0 0 rgba(220,38,38,.35);}70%{box-shadow:0 0 0 8px rgba(220,38,38,0);}100%{box-shadow:0 0 0 0 rgba(220,38,38,0);}}
+  .mandatory{border:2px solid var(--urgent);background:var(--urgent-tint);border-radius:14px;padding:16px 18px;margin-bottom:20px;animation:pulseBorder 2.4s infinite;}
+  .mandatory .mtitle{display:flex;align-items:center;gap:8px;font-weight:700;color:#9F1616;font-size:14.5px;margin-bottom:6px;}
+  .mandatory .msub{font-size:12.5px;color:#7A2020;margin-bottom:10px;line-height:1.5;}
+  .mandatory-done{border:2px solid var(--good);background:#EAF7EE;border-radius:14px;padding:16px 18px;margin-bottom:20px;}
+  .mandatory-done .mtitle{color:#0F6B31;font-weight:700;font-size:14.5px;display:flex;gap:8px;align-items:center;}
+
+  .mit-title{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+  .mit-list{list-style:none;margin:0;padding:0;}
+  .mit-item{display:flex;gap:11px;align-items:flex-start;padding:10px 4px;border-bottom:1px dashed var(--line);font-size:14.5px;line-height:1.5;cursor:pointer;user-select:none;}
+  .mit-item:last-child{border-bottom:none;}
+  .mit-box{flex:none;width:19px;height:19px;border-radius:6px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:12px;color:transparent;transition:all .12s ease;}
+  .mit-item.done .mit-box{background:var(--ink);color:#fff;}
+  .mit-item.done .mit-text{color:var(--muted);text-decoration:line-through;}
+  .backlog-tag{display:inline-block;background:var(--urgent);color:#fff;font-size:9.5px;font-weight:700;padding:1px 7px;border-radius:999px;margin-right:6px;font-family:ui-monospace,monospace;vertical-align:middle;}
+
+  .srs-section{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px;}
+  .srs-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+  .srs-head .mit-title{margin:0;}
+  .due-pill{background:var(--urgent);color:#fff;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;padding:3px 10px;border-radius:999px;font-weight:700;}
+  .chapter-due{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--srs-tint);border:1px solid #E0D1FA;border-radius:10px;padding:10px 14px;margin-bottom:8px;flex-wrap:wrap;}
+  .chapter-due .cname{font-size:13.5px;font-weight:600;color:#3B2A63;}
+  .chapter-due .cn{font-size:11.5px;color:#6D5B96;}
+  .chapter-due .box-dist{font-size:10px;color:#8B76BE;font-family:ui-monospace,monospace;}
+  .btn{border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:-apple-system,sans-serif;}
+  .btn-srs{background:var(--srs);color:#fff;} .btn-srs:hover{background:#6a2fd0;}
+  .btn-good{background:var(--good);color:#fff;} .btn-bad{background:var(--bad);color:#fff;} .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--text);}
+  .no-due{font-size:13px;color:var(--muted);font-style:italic;}
+
+  .fc-panel{margin-top:14px;background:#fff;border:2px solid var(--srs);border-radius:14px;padding:20px;}
+  .fc-progress{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+  .fc-card{min-height:120px;background:var(--srs-tint);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:26px 18px;cursor:pointer;font-size:16px;line-height:1.5;color:#2E1F52;position:relative;}
+  .fc-card .tag{position:absolute;top:10px;left:14px;font-size:10.5px;font-family:ui-monospace,monospace;color:#8B76BE;letter-spacing:1px;text-transform:uppercase;}
+  .fc-card .boxtag{position:absolute;top:10px;right:14px;font-size:10px;font-family:ui-monospace,monospace;color:#8B76BE;}
+  .fc-hint{text-align:center;font-size:11.5px;color:var(--muted);margin-top:8px;}
+  .fc-actions{display:flex;justify-content:center;gap:14px;margin-top:16px;}
+  .fc-done{text-align:center;padding:24px;}
+  .fc-done .big{font-size:32px;margin-bottom:8px;}
+
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px;}
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;}
+    .day{min-height:104px;padding:6px 5px;}
+    .day .chip{display:none;}
+    .day .num{font-size:14px;}
+    .wk-head{font-size:9.5px;}
+    .countdown{font-size:56px;}
+    .hero-inner{gap:16px;}
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="greek g1">β</div><div class="greek g2">α</div><div class="greek g3">µ</div>
+  <div class="hero-inner">
+    <div>
+      <div class="countdown">18</div>
+      <div class="countdown-label">ngày ôn tập còn lại (đã dồn lịch từ 04/07)</div>
+    </div>
+    <div class="hero-mid">
+      <p class="hero-title">Lịch ôn thi cuối kỳ — Microeconometrics</p>
+      <p class="hero-sub">⚠️ Đã bỏ lỡ 03/07 — nội dung được DỒN sang 04/07 với cường độ cao hơn. Spaced Repetition BẮT BUỘC mỗi ngày · khoảng lặp tăng dần 1→2→4→7→14→21 ngày · thẻ quá hạn dồn lại, không cho "trốn" ôn tập.</p>
+      <span class="hero-examdate">📅 THI: Thứ Tư, 22/07/2026</span>
+    </div>
+    <div class="streak-box">
+      <div class="streak-num" id="streakNum">0</div>
+      <div class="streak-label">🔥 ngày liên tiếp hoàn thành</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="reminderBanner"></div>
+
+  <div class="algo-note" style="border-color:#F3B4B4;background:#FDEAEA;color:#7A2020;">
+    🔁 <b>Đã tái cấu trúc lịch:</b> vì bỏ lỡ 03/07, toàn bộ nội dung ngày đó (đọc lý thuyết 1.1–1.3, diễn giải hệ số, flashcard Λ/Φ) đã được <b>gộp vào 04/07</b> — biến ngày 04/07 thành ngày học <b>gấp đôi khối lượng</b>. Từ 05/07 trở đi, lịch trở lại nhịp độ bình thường nhưng vẫn giữ nguyên yêu cầu ôn tập bắt buộc mỗi ngày. Hãy dành nhiều thời gian hơn cho riêng ngày 04/07.
+  </div>
+
+  <div class="srs-banner">
+    <div class="icon">🧠</div>
+    <div class="txt">
+      <b>Nguyên tắc bắt buộc:</b> mỗi ngày có thẻ (kể cả thẻ CŨ chưa ôn xong) sẽ hiện khung đỏ nhấp nháy "BẮT BUỘC HÔM NAY" ở đầu ngày đó. Bạn <b>không thể bỏ qua</b> — thẻ quá hạn sẽ tiếp tục hiện ở NGÀY SAU cho đến khi được ôn. Đánh dấu "Chưa nhớ" → khoảng lặp reset về 1 ngày (ôn lại ngay); "Đã nhớ" → khoảng lặp tăng dần theo dãy 1-2-4-7-14-21 ngày.
+    </div>
+    <div class="srs-stat" id="srsStat">Đang tải…</div>
+  </div>
+
+  <div class="algo-note" id="storageNote" style="display:none;">
+  </div>
+
+  <div class="algo-note">
+    ⚙️ <b>Thuật toán:</b> mỗi flashcard có 1 "box" riêng (0→5). Học lần đầu = box 0, ôn lại sau <code>1 ngày</code>. Nhớ đúng → box+1, khoảng lặp kế tiếp theo dãy <code>[1, 2, 4, 7, 14, 21]</code> ngày. Quên → box về 0, ôn lại ngay hôm sau. Đây là cường độ lặp lại NGẮT QUÃNG dày hơn nhiều so với lịch cố định +1/+3/+7 trước đây — đảm bảo kiến thức mới được củng cố gần như hằng ngày trong 2 tuần đầu.
+  </div>
+
+  <div class="legend" id="legend"></div>
+
+  <div class="cal-card">
+    <div class="cal-title">Tháng 7 / 2026 <span class="sub">Số đỏ trên góc ô = số thẻ ĐẾN HẠN/QUÁ HẠN bắt buộc ôn vào ngày đó</span></div>
+    <div class="grid" id="weekheads"></div>
+    <div class="grid" id="calendar" style="margin-top:8px;"></div>
+  </div>
+
+  <div class="detail" id="detail"></div>
+
+  <footer>Được tổng hợp từ Lecture_1→8 &amp; tutorial_02/03/06 · Ngân hàng câu hỏi song ngữ SS2022–SS2024 · Tiến độ ôn tập lưu riêng tư cho bạn · Chúc bạn thi tốt 22/07/2026 🎓</footer>
+</div>
+
+<script>
+/* ============================= STORAGE WRAPPER ============================= */
+/* Ưu tiên: window.storage (khi xem trong Claude.ai) -> localStorage (khi mở file trực tiếp
+   bằng trình duyệt) -> bộ nhớ tạm (chỉ khi cả 2 cách trên đều bị chặn). */
+const LS_PREFIX = 'mecal2026_';
+let storageMode = 'memory'; // 'cloud' | 'local' | 'memory'
+
+async function detectStorageMode(){
+  try{
+    if (window.storage) {
+      await window.storage.set('__probe__', '1', false);
+      storageMode = 'cloud';
+      return;
+    }
+  } catch(e){}
+  try{
+    localStorage.setItem(LS_PREFIX+'__probe__', '1');
+    localStorage.removeItem(LS_PREFIX+'__probe__');
+    storageMode = 'local';
+    return;
+  } catch(e){}
+  storageMode = 'memory';
+}
+
+const Store = {
+  _mem: {},
+  async get(key, def){
+    try{
+      if (window.storage) {
+        const r = await window.storage.get(key, false);
+        return r ? JSON.parse(r.value) : def;
+      }
+    } catch(e) { /* window.storage not available here */ }
+    try{
+      const raw = localStorage.getItem(LS_PREFIX+key);
+      if (raw !== null) return JSON.parse(raw);
+      return def;
+    } catch(e) { /* localStorage blocked (e.g. private mode, sandboxed iframe) */ }
+    return (key in Store._mem) ? Store._mem[key] : def;
+  },
+  async set(key, value){
+    Store._mem[key] = value;
+    try{
+      if (window.storage) { await window.storage.set(key, JSON.stringify(value), false); return; }
+    } catch(e) {}
+    try{ localStorage.setItem(LS_PREFIX+key, JSON.stringify(value)); } catch(e) {}
+  }
+};
+
+/* ============================= STATIC CALENDAR DATA ============================= */
+const PHASES = {
+  missed:{name:"Ngày đã bỏ lỡ", hex:"#9CA3AF", tint:"#F1F2F4"},
+  p1:{name:"Nền tảng Chương 1+2", hex:"#3B6FD6", tint:"var(--p1-tint)"},
+  p2:{name:"Ordered + Poisson (Ch.3+4)", hex:"#0EA5A0", tint:"var(--p2-tint)"},
+  p3:{name:"Censoring + Matching (Ch.5+6)", hex:"#DB2777", tint:"var(--p3-tint)"},
+  p4:{name:"Mở rộng: IV / RDD / DiD", hex:"#64748B", tint:"var(--p4-tint)"},
+  p5:{name:"Luyện đề thật (bấm giờ)", hex:"#DC2626", tint:"var(--p5-tint)"},
+  p6:{name:"Tổng ôn & nghỉ ngơi", hex:"#84A98C", tint:"var(--p6-tint)"},
+  exam:{name:"NGÀY THI", hex:"#B8860B", tint:"var(--exam-tint)"}
+};
+const WEEKDAY_VN = ["T2","T3","T4","T5","T6","T7","CN"];
+
+const DATA = {
+3:{wd:"Thứ Sáu",phase:"missed",chips:["❌ Đã bỏ lỡ ngày này","Bận lập kế hoạch, không học","Nội dung → dồn sang 04/07","Xem ghi chú bên dưới"],
+  mits:["Ngày 03/07 đã bị bỏ lỡ (bận làm kế hoạch thay vì học) — đây là điều hoàn toàn bình thường, quan trọng là điều chỉnh kịp thời.",
+        "Toàn bộ nội dung gốc của ngày này (đọc lý thuyết mục 1.1–1.3, luyện diễn giải hệ số, flashcard Λ(x′β)/Φ(x′β)) đã được GỘP sang ngày 04/07 để không bị mất kiến thức.",
+        "Từ 04/07 trở đi, mỗi ngày sẽ đòi hỏi cường độ cao hơn một chút để bù lại thời gian đã mất — không rút ngắn nội dung, chỉ nén thời gian.",
+        "Bài học: 'Done is better than perfect' — hành động ngay hôm nay quan trọng hơn một kế hoạch hoàn hảo nhưng không ai thực hiện."]},
+4:{wd:"Thứ Bảy",phase:"p1",chips:["[GỘP 2 NGÀY] Lý thuyết 1.1–1.5","Diễn giải hệ số + suy ngược MEA","Flashcard Λ/Φ/AME/MEA + Q1(T/F)","SRS + Recall tối nay"],
+  mits:["[Bù ngày 03/07 — khối lượng gấp đôi] Đọc TRỌN Bảng ký hiệu + Kiến thức nền tảng mục 1.1–1.5 (Logit/Probit, diễn giải hệ số, tính xác suất dự đoán, z-test, AME vs MEA). Dành nhiều thời gian hơn bình thường cho mục này.",
+        "Tự giải lại 3 câu diễn giải hệ số (mục 1.2) KHÔNG nhìn đáp án, sau đó luyện ngay kỹ thuật 'suy ngược MEA' với 3 bộ số tự chế (mục 1.5).",
+        "Làm flashcard: viết công thức Λ(x′β), Φ(x′β), AME, MEA từ trí nhớ (lặp 5 lần) — sau đó làm lại toàn bộ câu Q1 (statement Đúng/Sai) liên quan Chương 1 của cả 4 đề thi.",
+        "Hoàn thành phiên ôn tập Spaced Repetition nếu đã có thẻ đến hạn (xem mục bên dưới); tối nay tự liệt kê 5 ký hiệu Chương 1 (Λ, Φ, β, x′β, f(·)) không nhìn tài liệu."]},
+5:{wd:"Chủ Nhật",phase:"p1",chips:["Biến bậc 2 + Wald/LR/LM","Tính tay ME bậc 2","Học CL/MNL/Mixed (2.1–2.2)","Ôn tập SRS (bắt buộc)"],
+  mits:["Học mục 1.6–1.7 (marginal effect khi có biến bậc 2; phân biệt Wald/LR/LM test).",
+        "Tính tay marginal effect cho 2 case có biến bậc 2, dùng số liệu tự tạo.",
+        "Chương 2: đọc định nghĩa CL/MNL/Mixed + ví dụ ứng dụng (mục 2.1–2.2).",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+6:{wd:"Thứ Hai",phase:"p1",chips:["Học IIA (mục 2.3)","Tự đặt 2 ví dụ CL/MNL mới","Mini-test Q1+Q2 (4 đề)","Ôn tập SRS (bắt buộc)"],
+  mits:["Chương 2: học kỹ giả định IIA (mục 2.3) qua ví dụ 'red bus – blue bus'.",
+        "Tự đặt 2 ví dụ MỚI cho CL và MNL (không được trùng ví dụ đã có trong đề).",
+        "Làm mini-test: chỉ câu Q1+Q2 của cả 4 đề, không bấm giờ, tự chấm điểm.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+7:{wd:"Thứ Ba",phase:"p2",chips:["Ordered: latent var + α","Viết công thức Pr(y=j)","Chương 2 mục 2.1–2.3","Ôn tập SRS (bắt buộc)"],
+  mits:["Ordered Model: học latent variable y*, hệ ngưỡng α, công thức xác suất tổng quát (mục 3.1).",
+        "Luyện viết công thức Pr(y=j) cho nhóm CAO NHẤT và nhóm THẤP NHẤT (2 trường hợp đặc biệt hay hỏi).",
+        "Chương 2: nhắc lại mục 2.1–2.3 không nhìn tài liệu.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+8:{wd:"Thứ Tư",phase:"p2",chips:["So sánh 2 nhóm + ME","Làm lại Part II (4 đề)","z-test cho polr()","Ôn tập SRS (bắt buộc)"],
+  mits:["Ordered Model: kỹ thuật so sánh 2 nhóm (dùng tính đơn điệu của F) + công thức marginal effect (mục 3.2–3.4).",
+        "Làm lại toàn bộ Part II (ordered probit) của cả 4 đề thi, không nhìn đáp án trước.",
+        "Luyện z-test cho output polr() — so sánh |t| với giá trị tới hạn qnorm().",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+9:{wd:"Thứ Năm",phase:"p2",chips:["Poisson: log-likelihood, chain rule","Tính tay ME Poisson bậc 2","Học Single Crossing Property","Ôn tập SRS (bắt buộc)"],
+  mits:["Poisson: định nghĩa, hàm log-likelihood, quy tắc chuỗi cho marginal effect (mục 4.1–4.3).",
+        "Tính tay marginal effect cho 3 case Poisson tự tạo, kể cả trường hợp có biến bậc 2.",
+        "Học kỹ Single Crossing Property (mục 4.4) — quy tắc so sánh j với µ để xác định dấu.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+10:{wd:"Thứ Sáu",phase:"p2",chips:["Hoàn thiện z-test/Wald Poisson","Làm lại SS2023-Q3, SS2024-Q1c/2b","Ôn bảng ký hiệu Ch.3+4","Ôn tập SRS (bắt buộc)"],
+  mits:["Poisson: hoàn thiện mục 4.5 (z-test và Wald test áp dụng cho mô hình Poisson).",
+        "Làm lại câu SS2023-Q3 và SS2024-Q1c, Q2b từ đầu, không nhìn đáp án.",
+        "Ôn lại Bảng ký hiệu Chương 3+4 — che cột giải thích, tự đoán ý nghĩa từng ký hiệu.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+11:{wd:"Thứ Bảy",phase:"p3",chips:["Censoring vs Truncation","Vẽ trục số minh họa ngưỡng c","Làm lại statement 5.2 (4 đề)","Ôn tập SRS (bắt buộc)"],
+  mits:["Học kỹ định nghĩa Censoring vs Truncation, bảng so sánh 2 khái niệm (mục 5.1).",
+        "Tự vẽ trục số minh họa ngưỡng c cho cả 2 loại (censor giữ quan sát, truncate loại bỏ hẳn).",
+        "Làm lại các câu statement liên quan (mục 5.2) của cả 4 đề thi.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+12:{wd:"Chủ Nhật",phase:"p3",chips:["Matching: Exact vs PSM, CIA","Đọc-hiểu R-output matchit (4 đề)","Chương 5 nhắc lại","Ôn tập SRS (bắt buộc)"],
+  mits:["Matching: Exact matching vs PSM, CIA/Balancing Condition/Common Support (mục 6.1–6.3).",
+        "Đọc từng dòng R-output matchit() của cả 4 đề, tự giải thích thành lời hoàn chỉnh.",
+        "Chương 5: nhắc lại Censoring/Truncation không nhìn tài liệu.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+13:{wd:"Thứ Hai",phase:"p3",chips:["Matching: implementation, ATE vs ATT","Viết lại đáp án Q4 (4 đề)","Ôn bảng ký hiệu Ch.5+6","Ôn tập SRS (bắt buộc)"],
+  mits:["Matching: quy trình implementation (with/without replacement, số lượng match), ATE vs ATT (mục 6.4–6.7).",
+        "Viết lại từ đầu toàn bộ đáp án câu Q4 (matching) của cả 4 đề, không nhìn đáp án.",
+        "Ôn lại Bảng ký hiệu Chương 5+6.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+14:{wd:"Thứ Ba",phase:"p4",chips:["Causal Diagram: Independence, SUTVA","IV: 3 điều kiện + 2SLS","IV: LATE, Compliers/Defiers","Ôn tập SRS (bắt buộc)"],
+  mits:["Causal Diagram: Independence Assumption, SUTVA (Lecture 4).",
+        "IV: 3 điều kiện của instrument hợp lệ (Relevance, Exclusion Restriction, Random Assignment), công thức 2SLS.",
+        "IV: LATE và phân loại Compliers / Defiers / Never-takers / Always-takers.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+15:{wd:"Thứ Tư",phase:"p4",chips:["RDD: Sharp vs Fuzzy Design","RDD: Continuity Assumption, Wald est.","Liên hệ Matching–RDD","Ôn tập SRS (bắt buộc)"],
+  mits:["RDD: Sharp Design vs Fuzzy Design, cách xác định treatment qua running variable.",
+        "RDD: Continuity Assumption, Wald-type estimator cho Fuzzy Design.",
+        "Đọc lại tutorial_03_Matching để liên hệ ý tưởng so sánh cận biên giữa Matching và RDD.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+16:{wd:"Thứ Năm",phase:"p4",chips:["DiD: công thức 2x2, Parallel Trends","DiD: Event-study, đọc tutorial_06","Sơ đồ tư duy 4 chương mở rộng","Ôn tập SRS (bắt buộc)"],
+  mits:["DiD: công thức hồi quy 2×2, Parallel Trends Assumption.",
+        "DiD: mở rộng Event-study, đọc tutorial_06_DiD.pdf để lấy ví dụ minh họa cụ thể.",
+        "Tự vẽ sơ đồ tư duy 1 trang tổng hợp cả 4 chương mở rộng (Causal Diagram / IV / RDD / DiD).",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+17:{wd:"Thứ Sáu",phase:"p5",chips:["Làm đề SS2022(Jul) – 60'","Chấm bài, so Solution","Ghi lỗi vào Error Log","Ôn tập SRS (bắt buộc)"],
+  mits:["Làm đề SS2022 (July) — bấm giờ nghiêm ngặt 60 phút, đúng điều kiện phòng thi.",
+        "Chấm bài ngay sau đó, đối chiếu kỹ với Solution chính thức.",
+        "Ghi mọi lỗi sai vào 'Error Log' (câu nào, lỗi gì, nguyên nhân do đâu).",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+18:{wd:"Thứ Bảy",phase:"p5",chips:["Làm đề SS2022-Termin2 – 60'","Chấm + đối chiếu Error Log","Ôn phần hay sai nhất","Ôn tập SRS (bắt buộc)"],
+  mits:["Làm đề SS2022-Termin2 — bấm giờ 60 phút.",
+        "Chấm bài, kiểm tra xem lỗi có LẶP LẠI so với Error Log ngày hôm trước không.",
+        "Ôn sâu lại đúng phần hay sai nhất vừa phát hiện được.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+19:{wd:"Chủ Nhật",phase:"p5",chips:["Làm đề SS2023 – 60 phút","Chấm + cập nhật Error Log","Ôn sâu điểm yếu nhất","Ôn tập SRS (bắt buộc)"],
+  mits:["Làm đề SS2023 — bấm giờ 60 phút.",
+        "Chấm bài, cập nhật đầy đủ vào Error Log.",
+        "Ôn sâu điểm yếu nhất phát hiện được qua 3 đề đã luyện.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+20:{wd:"Thứ Hai",phase:"p5",chips:["Làm đề SS2024 – 60 phút","Hoàn thiện Error Log 4 đề","Tổng hợp 3–5 lỗi hay lặp","Ôn tập SRS (bắt buộc)"],
+  mits:["Làm đề SS2024 — bấm giờ 60 phút.",
+        "Chấm bài, hoàn thiện Error Log đầy đủ cho cả 4 đề đã luyện.",
+        "Tổng hợp 3–5 lỗi hay LẶP LẠI nhất → ghi riêng ra 1 trang note cuối cùng.",
+        "Hoàn thành phiên ôn tập Spaced Repetition (xem mục bên dưới, BẮT BUỘC)."]},
+21:{wd:"Thứ Ba",phase:"p6",chips:["Sáng: chỉ đọc Bảng ký hiệu + Error Log","10 câu T/F hay mất điểm oan","Chiều: nghỉ ngơi nhẹ","Ôn tập SRS NHẸ (bắt buộc)"],
+  mits:["Sáng: CHỈ đọc lại Bảng ký hiệu 6 chương + Error Log — KHÔNG học kiến thức mới.",
+        "Làm nhanh 10 câu statement Đúng/Sai từ 4 đề (dạng dễ mất điểm oan nhất).",
+        "Chiều: nghỉ ngơi nhẹ, đi bộ / thư giãn, tránh nhồi nhét phút chót.",
+        "Hoàn thành phiên ôn tập Spaced Repetition NHẸ (xem mục bên dưới) rồi ngủ sớm trước 22h."]},
+22:{wd:"Thứ Tư",phase:"exam",chips:["🎓 THI CUỐI KỲ","Đến sớm 15 phút","Đọc lướt cả đề trước","Kiểm tra làm tròn 4 số TP"],
+  mits:["Đến phòng thi sớm 15 phút, giữ tâm lý bình tĩnh, tự tin.",
+        "Đọc lướt TOÀN BỘ đề trước khi bắt đầu làm, phân bổ thời gian hợp lý cho từng câu.",
+        "Ưu tiên làm chắc câu Q1 (statement Đúng/Sai) và câu dễ trước để đảm bảo điểm nền.",
+        "Kiểm tra lại đơn vị và làm tròn 4 chữ số thập phân trước khi nộp bài. Chúc bạn thi tốt! 🎓"]}
+};
+
+const CHAPTERS = {
+  1:"Chương 1 — Binary Choice", 2:"Chương 2 — Multinomial", 3:"Chương 3 — Ordered Models",
+  4:"Chương 4 — Poisson", 5:"Chương 5 — Censoring/Truncation", 6:"Chương 6 — Matching",
+  7:"Mở rộng — IV/RDD/DiD/Causal"
+};
+const CARD_INTRO_DAY = {1:4, 2:5, 3:7, 4:9, 5:11, 6:12, 7:14};
+const INTERVALS = [1,2,4,7,14,21]; // ngày, index = box level 0..5
+
+/* ============================= FLASHCARD BANK (mở rộng, chi tiết hơn) ============================= */
+const CARDS = [
+  // ---- CHƯƠNG 1 — BINARY CHOICE MODELS ----
+  {id:"c1-1", ch:1, f:"Definition: what is a binary choice model (mô hình lựa chọn nhị phân)?", b:"y takes value 1 or 0 (VD: unemployed/employed). Model: Pr(y=1|x) = F(x′β), where F(·) is a cdf so predicted probability stays in [0,1]."},
+  {id:"c1-2", ch:1, f:"Logit model formula?", b:"p = Λ(x′β) = e^(x′β) / (1 + e^(x′β))  — Λ(·) = logistic cdf"},
+  {id:"c1-3", ch:1, f:"Probit model formula?", b:"p = Φ(x′β)  — Φ(·) = standard normal cdf (hàm phân phối chuẩn hóa)"},
+  {id:"c1-4", ch:1, f:"Linear Probability Model (LPM) formula — and its main problem?", b:"p = x′β. Problem: not bounded — can predict p<0 or p>1"},
+  {id:"c1-5", ch:1, f:"Notation: what does x′β represent?", b:"The 'linear index' (chỉ số tuyến tính) = β0+β1x1+...+βKxK — a single number combining all regressors"},
+  {id:"c1-6", ch:1, f:"Notation: difference between F(·) and f(·)?", b:"F(·) = cdf (cumulative distribution function); f(·) = pdf (probability density function, hàm mật độ) = derivative of F(·). f(·) is ALWAYS positive."},
+  {id:"c1-7", ch:1, f:"General marginal effect formula for a CONTINUOUS regressor?", b:"∂p/∂x = f(x′β)·β"},
+  {id:"c1-8", ch:1, f:"MEA (Marginal Effect at the Average) — formula & meaning?", b:"MEA = f(x̄′β)·βj — evaluated ONCE at sample-average x̄ (giá trị trung bình mẫu)"},
+  {id:"c1-9", ch:1, f:"AME (Average Marginal Effect) — formula & meaning?", b:"AME = (1/N)Σf(x′iβ)·βj — computed for EACH individual, then averaged"},
+  {id:"c1-10", ch:1, f:"Marginal effect formula for a DUMMY regressor (discrete change, not derivative)?", b:"mij = F(x̃iβ̃+βj) − F(x̃iβ̃), where (x̃i,β̃) = all OTHER regressors/coefficients excluding dummy j"},
+  {id:"c1-11", ch:1, f:"Why can we only state the DIRECTION of a coefficient's effect, not its size?", b:"Because ∂p/∂x=f(x′β)β, and f(·) is always positive but CHANGES with x — it's not a constant"},
+  {id:"c1-12", ch:1, f:"Marginal effect with a quadratic term (age + age²)? Turning point formula?", b:"f(x′β)·(β_age + 2β_age²·age). Turning point: age* = −β_age / (2β_age²)"},
+  {id:"c1-13", ch:1, f:"Rule of thumb comparing raw coefficients across Logit/Probit/OLS?", b:"β̂_Logit ≈ 1.6·β̂_Probit ≈ 4·β̂_OLS (only valid for 0.1≤p≤0.9) — never compare raw β directly, always compare marginal effects"},
+  {id:"c1-14", ch:1, f:"z-test: hypotheses and test statistic?", b:"H0: βj=0 vs H1: βj≠0. Statistic: z = β̂j / se(β̂j)"},
+  {id:"c1-15", ch:1, f:"4 required components of a complete z-test answer?", b:"(1) formal hypotheses (2) p-value or test statistic value (3) explicit comparison with α (4) plain-language conclusion"},
+  {id:"c1-16", ch:1, f:"Wald test — statistic formula & which model(s) required?", b:"W = H0′(RVR′)⁻¹H0 ~ χ²q. Only requires the UNRESTRICTED model."},
+  {id:"c1-17", ch:1, f:"Likelihood Ratio (LR) test — statistic formula & which model(s) required?", b:"LR = −2(lnLr − lnLur) ~ χ²q. Requires BOTH restricted and unrestricted models."},
+  {id:"c1-18", ch:1, f:"Lagrange Multiplier (LM) test — which model is required?", b:"Only the RESTRICTED model."},
+  {id:"c1-19", ch:1, f:"T/F: 'If AME is positive, every individual's marginal effect is also positive'?", b:"True — f(·) is always positive, so the sign of every individual ME depends only on sign(β), which is the same for everyone."},
+  {id:"c1-20", ch:1, f:"'Reverse-engineer MEA' technique: know MEA(size), want MEA(inc) — step 1?", b:"Solve for the shared constant: f(x̄′β) = MEA(size)/β̂(size), then multiply by β̂(inc)"},
+
+  // ---- CHƯƠNG 2 — MULTINOMIAL MODELS ----
+  {id:"c2-1", ch:2, f:"General multinomial model formula?", b:"pj = Pr[yi=j] = Fj(xi,β), j=1,...,m — must sum to 1 across all j"},
+  {id:"c2-2", ch:2, f:"Conditional Logit (CL) formula — when is it used?", b:"pij = e^(x′ijβ) / Σl e^(x′ilβ). Used when regressors VARY by alternative (giá, thời gian — price, travel time)"},
+  {id:"c2-3", ch:2, f:"Multinomial Logit (MNL) formula — when is it used?", b:"pij = e^(x′iβj) / Σl e^(x′iβl). Used when regressors DON'T vary by alternative (thu nhập cá nhân — individual income)"},
+  {id:"c2-4", ch:2, f:"Mixed Logit formula — when is it used?", b:"pij = e^(x′ijβ+w′iγj) / Σl e^(x′ilβ+w′iγl). Used when BOTH types of regressors exist together."},
+  {id:"c2-5", ch:2, f:"What is a 'base category' (nhóm cơ sở) in MNL, and why is it needed?", b:"A reference alternative with β1=0, required for identification since probabilities must sum to 1"},
+  {id:"c2-6", ch:2, f:"MNL with m alternatives — how many alternative-specific intercepts are estimated?", b:"(m−1), not m — because of the base-category normalization"},
+  {id:"c2-7", ch:2, f:"IIA (Independence of Irrelevant Alternatives) — definition & formula?", b:"Odds ratio between any 2 alternatives is independent of other alternatives: Pr[y=j|y=j or k] = e^(x′(βj−βk)) / (1+e^(x′(βj−βk)))"},
+  {id:"c2-8", ch:2, f:"IIA classic example — 'red bus / blue bus'?", b:"Adding an identical blue bus should split bus-probability 25/25 with car at 50%, but IIA forces 33/33/33 — a known limitation (hạn chế) of MNL"},
+  {id:"c2-9", ch:2, f:"Notation glossary: m, i, j, l, β, γj — what does each mean?", b:"m=total alternatives; i=individual index; j,l=alternative index; β=coefficient on alternative-varying regressors (shared); γj=coefficient on individual-invariant regressors (alternative-specific)"},
+
+  // ---- CHƯƠNG 3 — ORDERED MODELS ----
+  {id:"c3-1", ch:3, f:"Ordered model — latent variable equation?", b:"y*i = x′iβ + ui (no intercept in x — its role is absorbed by the thresholds α)"},
+  {id:"c3-2", ch:3, f:"Threshold structure (α0, α1, ..., αm) in an ordered model?", b:"α0=−∞, αm=+∞ (fixed, not estimated); α1,...,αm−1 ARE estimated jointly with β via MLE"},
+  {id:"c3-3", ch:3, f:"General predicted probability formula Pr(y=j) in an ordered model?", b:"Pr[yi=j] = F(αj − x′iβ) − F(αj−1 − x′iβ)"},
+  {id:"c3-4", ch:3, f:"Pr(y=m) — the HIGHEST group — simplified formula?", b:"1 − F(αm−1 − x′β)  (since αm=+∞)"},
+  {id:"c3-5", ch:3, f:"Pr(y=1) — the LOWEST group — simplified formula?", b:"F(α1 − x′β)  (since α0=−∞)"},
+  {id:"c3-6", ch:3, f:"Number of parameters in an ordered model with m groups, K regressors?", b:"K + (m−1) parameters — far more parsimonious (tiết kiệm) than MNL's (m−1)(K+1)"},
+  {id:"c3-7", ch:3, f:"Marginal effect formula in an ordered model — how many density terms?", b:"TWO: [F′(αj−1−x′β) − F′(αj−x′β)]·β"},
+  {id:"c3-8", ch:3, f:"Technique to compare Pr(y=j) between 2 groups (e.g. male vs female) WITHOUT plugging numbers?", b:"Use the fact that F is MONOTONICALLY INCREASING (đơn điệu tăng) — compare only the arguments of F, sign follows automatically"},
+  {id:"c3-9", ch:3, f:"z-test for polr() output — what's different vs glm()?", b:"polr() does NOT print a p-value by default — you must compare |t value| to a given critical value (e.g. via qnorm())"},
+
+  // ---- CHƯƠNG 4 — POISSON (COUNT DATA) ----
+  {id:"c4-1", ch:4, f:"Poisson probability mass function (pmf)?", b:"Pr[Y=y] = e^(−µ)·µ^y / y!,  y=0,1,2,..."},
+  {id:"c4-2", ch:4, f:"Mean function µi in a Poisson regression?", b:"µi = exp(x′iβ) — guarantees µi > 0 always"},
+  {id:"c4-3", ch:4, f:"Equidispersion (đồng phương sai) — what does it mean?", b:"E[Y] = V[Y] = µ  (mean EQUALS variance) — a strong, often unrealistic restriction"},
+  {id:"c4-4", ch:4, f:"Poisson log-likelihood function?", b:"lnL(β) = Σ[yi·x′iβ − exp(x′iβ) − ln(yi!)]"},
+  {id:"c4-5", ch:4, f:"EXACT interpretation of coefficient β in Poisson?", b:"[exp(β) − 1] × 100% change in the expected count"},
+  {id:"c4-6", ch:4, f:"APPROXIMATE (quick) interpretation of coefficient β in Poisson?", b:"β × 100% change in expected count (only accurate when β is small)"},
+  {id:"c4-7", ch:4, f:"Marginal effect for x when µ=exp(β0+β1x) (chain rule)?", b:"∂µ/∂x = µ·β1  — 'outer derivative' µ times 'inner derivative' β1"},
+  {id:"c4-8", ch:4, f:"Marginal effect when µ=exp(β0+β1x+β2x²) (quadratic, chain rule)?", b:"∂µ/∂x = µ·(β1 + 2β2x)"},
+  {id:"c4-9", ch:4, f:"Probability of a SPECIFIC count value k — formula?", b:"Pr(y=k|x) = e^(−µ)·µ^k / k!"},
+  {id:"c4-10", ch:4, f:"Marginal effect of x on Pr(y=k|x) — full formula?", b:"∂Pr(y=k|x)/∂x = e^(−µ)(k−µ)µ^(k−1)/k! · (∂µ/∂x)"},
+  {id:"c4-11", ch:4, f:"Single Crossing Property — what does it state?", b:"sign(ME on Pr(y=k)) = sign(k−µ)·sign(β). If k<µ → sign FLIPS vs β; if k>µ → sign STAYS same as β"},
+
+  // ---- CHƯƠNG 5 — CENSORING & TRUNCATION ----
+  {id:"c5-1", ch:5, f:"Definition: Censoring (kiểm duyệt/cắt cụt giá trị)?", b:"The exact value is unobserved beyond a KNOWN threshold, but the observation still EXISTS in the sample"},
+  {id:"c5-2", ch:5, f:"Definition: Truncation (cắt bỏ mẫu)?", b:"The WHOLE observation is EXCLUDED from the sample if it falls beyond a threshold — we don't even know it exists"},
+  {id:"c5-3", ch:5, f:"Censored regression model — censoring from below at threshold c?", b:"w = y if y>c;  w = c if y≤c   (w=observed, y=true latent value)"},
+  {id:"c5-4", ch:5, f:"Truncated regression model — truncation from below at c?", b:"g(y|y≥c,x) = f(y|x) / [1 − F(c|x)]  — rescaled so density still integrates to 1"},
+  {id:"c5-5", ch:5, f:"Censoring from BELOW: which side of c is observed EXACTLY?", b:"ABOVE c (y>c) is exact. AT/BELOW c is censored — common trap: don't reverse this!"},
+  {id:"c5-6", ch:5, f:"Real-world example of Censoring?", b:"Top-coded earnings (thu nhập bị giới hạn trần) in social security data"},
+  {id:"c5-7", ch:5, f:"Real-world example of Truncation?", b:"Tax-return data only includes people whose income exceeds the minimum filing threshold"},
+
+  // ---- CHƯƠNG 6 — MATCHING ----
+  {id:"c6-1", ch:6, f:"Exact matching — definition?", b:"Matches units with IDENTICAL values on ALL covariates X. Impractical with high-dimensional/continuous X (curse of dimensionality)."},
+  {id:"c6-2", ch:6, f:"ATE estimator under exact matching — formula?", b:"ATE = (1/N)Σi(2Di−1)[Yi − (1/M)Σm Yjm(i)]"},
+  {id:"c6-3", ch:6, f:"Propensity score — definition & formula?", b:"p(X) = Pr(D=1|X) = F(X′β) — usually estimated via logit or probit"},
+  {id:"c6-4", ch:6, f:"CIA (Conditional Independence Assumption) — formula?", b:"(Y1,Y0) ⊥ D | p(X) — potential outcomes independent of treatment, GIVEN the propensity score"},
+  {id:"c6-5", ch:6, f:"Balancing condition — formula?", b:"D ⊥ X | p(X) — among units with the same p(X), treatment status is unrelated to X"},
+  {id:"c6-6", ch:6, f:"Common Support condition?", b:"0 < Pr(D=1|X) < 1 for all X — both treated & control units must exist at every propensity-score value"},
+  {id:"c6-7", ch:6, f:"Does exact matching imply PSM? Does the reverse hold?", b:"YES (identical X ⇒ identical p(X)). REVERSE: NO (identical p(X) does NOT imply identical X)"},
+  {id:"c6-8", ch:6, f:"Nearest-Neighbor matching — what distance/criterion is used?", b:"Closest propensity score p(X) — using a similarity measure (thước đo tương đồng) like Euclidean distance. NEVER based on the outcome Y."},
+  {id:"c6-9", ch:6, f:"matchit(method='nearest') in R — default components?", b:"Nearest-neighbor, 1:1 matching, WITHOUT replacement, propensity score estimated via LOGIT"},
+  {id:"c6-10", ch:6, f:"ATE (Average Treatment Effect) — formula & meaning?", b:"ATE = E[Y1−Y0] — expected effect for the WHOLE population"},
+  {id:"c6-11", ch:6, f:"ATT / ATET (Average Treatment Effect on the Treated) — formula & meaning?", b:"ATT = E[Y1−Y0|D=1] — average effect ONLY among those actually treated"},
+  {id:"c6-12", ch:6, f:"When do ATE and ATT differ?", b:"When treatment effects are heterogeneous (không đồng nhất) AND individuals self-select into treatment based on expected gains"},
+  {id:"c6-13", ch:6, f:"Independence Assumption (random assignment) — formula?", b:"(Y1,Y0) ⊥ D — treatment assignment unrelated to potential outcomes, including expected benefit"},
+
+  // ---- MỞ RỘNG (7) — CAUSAL DIAGRAM / IV / RDD / DiD ----
+  {id:"c7-1", ch:7, f:"Potential Outcome Model — key idea?", b:"Every unit i has TWO potential outcomes Y1i, Y0i — only ONE is ever observed ('fundamental problem of causal inference')"},
+  {id:"c7-2", ch:7, f:"SUTVA — how many components? Name them.", b:"3: (1) homogeneous treatment dose, (2) no spillover/externality, (3) no general-equilibrium effects"},
+  {id:"c7-3", ch:7, f:"Why is Instrumental Variables (IV) needed?", b:"When the regressor of interest is ENDOGENOUS (tương quan với sai số) — OLS becomes biased & inconsistent"},
+  {id:"c7-4", ch:7, f:"3 conditions for a valid instrument Z in IV?", b:"(1) Relevance: Cov(Z,D)≠0 (testable) (2) Exclusion restriction: Cov(Z,ε)=0 (NOT testable) (3) Random assignment / as-good-as-random"},
+  {id:"c7-5", ch:7, f:"2SLS (Two-Stage Least Squares) estimator formula?", b:"δ_IV = Cov(Y,Z) / Cov(D,Z)"},
+  {id:"c7-6", ch:7, f:"LATE (Local Average Treatment Effect) — 4 population subgroups by reaction to instrument?", b:"Compliers, Defiers, Never-takers, Always-takers. IV/2SLS identifies the effect ONLY for Compliers."},
+  {id:"c7-7", ch:7, f:"RDD — Sharp Design vs Fuzzy Design?", b:"Sharp: treatment FULLY determined by cutoff. Fuzzy: only the PROBABILITY of treatment jumps (imperfect compliance)"},
+  {id:"c7-8", ch:7, f:"RDD — Continuity Assumption?", b:"Without treatment, the outcome-vs-running-variable relationship would be smooth/continuous through the cutoff — this is the key IDENTIFYING assumption"},
+  {id:"c7-9", ch:7, f:"DiD (Difference-in-Differences) — 2×2 regression equation?", b:"Yit = εXit + ω1Di + ω2Tt + ω3(Tt·Di) + ϑi + ϵit — ω3 is the DiD estimator (= ATT)"},
+  {id:"c7-10", ch:7, f:"Parallel Trends Assumption in DiD?", b:"Without treatment, treatment & control groups would have evolved in PARALLEL over time — untestable directly, but checkable via pre-trends"},
+  {id:"c7-11", ch:7, f:"DiD Event-study extension — main benefit?", b:"Allows testing pre-treatment coefficients ρj=0 (F-test of parallel pre-trends) and visualizing dynamic effects over time"},
+  {id:"c7-12", ch:7, f:"Key risk with Staggered Treatment DiD (multiple treatment times)?", b:"Using already-treated ('early adopter') units as controls for later-treated units can bias naive two-way fixed-effects estimators"}
+];
+
+/* ============================= APP STATE ============================= */
+let cardState = {};     // id -> {box, next}
+let doneState = {};     // 'date-idx' -> bool (MIT checkboxes)
+let completedDates = {};// date(int) -> true (mandatory review fully cleared that day)
+let selectedDate = 3;
+let session = null;
+
+async function loadState(){
+  cardState = await Store.get('srs-cardstate', {});
+  doneState = await Store.get('srs-done', {});
+  completedDates = await Store.get('srs-completed', {});
+}
+async function saveCardState(){ await Store.set('srs-cardstate', cardState); }
+async function saveDone(){ await Store.set('srs-done', doneState); }
+async function saveCompleted(){ await Store.set('srs-completed', completedDates); }
+
+function ensureCard(card){
+  if(!cardState[card.id]){
+    cardState[card.id] = { box:0, next: CARD_INTRO_DAY[card.ch] + 1 };
+  }
+}
+function dueCardsForDate(date){
+  // QUAN TRỌNG: khi xem trước 1 ngày trong tương lai (so với hôm nay thật), KHÔNG được tính
+  // thẻ của những chương CHƯA THỰC SỰ học tới hoặc CHƯA THỰC SỰ đến hạn — chỉ hiện đúng số thẻ
+  // đã thật sự đến hạn TÍNH ĐẾN HÔM NAY, bất kể đang xem ngày nào xa hơn trên lịch.
+  const cutoff = Math.min(date, computeTodayJulyDay());
+  return CARDS.filter(c=>{
+    ensureCard(c);
+    return CARD_INTRO_DAY[c.ch] <= cutoff && cardState[c.id].next <= cutoff;
+  });
+}
+function dueChaptersFor(date){
+  return [...new Set(dueCardsForDate(date).map(c=>c.ch))];
+}
+function cardsForSession(date, chapter){
+  return dueCardsForDate(date).filter(c=>c.ch===chapter);
+}
+async function markCard(card, date, success){
+  const st = cardState[card.id];
+  st.box = success ? Math.min(st.box+1, INTERVALS.length-1) : 0;
+  st.next = date + INTERVALS[st.box];
+  await saveCardState();
+}
+function computeStreak(){
+  // streak counted backward from the latest exam-range day that has been marked complete
+  let streak = 0;
+  for(let d=22; d>=3; d--){
+    if(completedDates[d]) streak++;
+    else if (d < 22 && !completedDates[d] && streak>0) break;
+  }
+  // simpler: count consecutive completed days ending at the max completed day
+  const completedDays = Object.keys(completedDates).map(Number).filter(d=>completedDates[d]).sort((a,b)=>a-b);
+  if(completedDays.length===0) return 0;
+  let s = 1;
+  for(let i=completedDays.length-1;i>0;i--){
+    if(completedDays[i]-completedDays[i-1]===1) s++;
+    else break;
+  }
+  return s;
+}
+const FIRST_STUDY_DAY = 4;   // ngày học đầu tiên thực sự (03/07 đã bị bỏ lỡ)
+const LAST_ROLLOVER_DAY = 21; // KHÔNG BAO GIỜ dồn nhiệm vụ tồn đọng sang ngày 22 (ngày thi)
+
+function getEffectiveTasksForDay(day){
+  const tasks = [];
+  const info = DATA[day];
+  if(!info || !info.mits) return tasks;
+
+  // Với ngày thi (22) hoặc ngày "đã bỏ lỡ" (3): KHÔNG kéo backlog, chỉ hiện đúng nội dung gốc của ngày đó
+  if (day > LAST_ROLLOVER_DAY || day < FIRST_STUDY_DAY) {
+    info.mits.forEach((text, idx)=> tasks.push({day, idx, text, backlog:false}));
+    return tasks;
+  }
+
+  // QUAN TRỌNG: chỉ dồn việc từ những ngày ĐÃ THỰC SỰ KẾT THÚC (so với đồng hồ thật),
+  // KHÔNG dồn từ những ngày chưa tới — kể cả khi bạn đang xem trước 1 ngày trong tương lai trên lịch.
+  // VD: nếu hôm nay thực tế là 8/07, xem trước ngày 15/07 thì KHÔNG được coi ngày 9-14 là "đã trễ".
+  const realToday = computeTodayJulyDay();
+  const backlogCutoff = Math.min(day, realToday);
+
+  for (let d = FIRST_STUDY_DAY; d < backlogCutoff; d++){
+    const di = DATA[d];
+    if(!di || !di.mits) continue;
+    di.mits.forEach((text, idx)=>{
+      const key = d+'-'+idx;
+      if(!doneState[key]) tasks.push({day:d, idx, text, backlog:true});
+    });
+  }
+  // Nhiệm vụ gốc của chính ngày hôm nay
+  info.mits.forEach((text, idx)=> tasks.push({day, idx, text, backlog:false}));
+  return tasks;
+}
+
+function mitAllDone(date){
+  const info = DATA[date];
+  if(!info) return false;
+  const tasks = getEffectiveTasksForDay(date);
+  return tasks.every(t => !!doneState[t.day+'-'+t.idx]);
+}
+
+async function checkDayComplete(date){
+  const wasComplete = !!completedDates[date];
+  const nowComplete = mitAllDone(date) && dueCardsForDate(date).length===0;
+  completedDates[date] = nowComplete;
+  await saveCompleted();
+  if(!wasComplete && nowComplete){
+    celebrate(true);
+    const s = computeStreak();
+    showToast(`🔥 Cả ngày hoàn thành! Streak nối dài: ${s} ngày liên tiếp.`);
+    bumpStreak();
+  }
+  return nowComplete;
+}
+
+/* ---- Celebration effects ---- */
+function celebrate(big){
+  const container = document.createElement('div');
+  container.className = 'confetti-container';
+  document.body.appendChild(container);
+  const colors = ['#7C3AED','#3B6FD6','#0EA5A0','#DB2777','#DC2626','#F5B700','#16A34A'];
+  const count = big ? 150 : 55;
+  for(let i=0;i<count;i++){
+    const el = document.createElement('div');
+    el.className='confetti-piece';
+    const size = 6+Math.random()*8;
+    el.style.left = (Math.random()*100)+'vw';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    el.style.width = size+'px';
+    el.style.height = size+'px';
+    el.style.animationDuration = (2+Math.random()*1.8)+'s';
+    el.style.animationDelay = (Math.random()*0.4)+'s';
+    el.style.setProperty('--rot', (Math.random()*720-360)+'deg');
+    container.appendChild(el);
+  }
+  if(big){
+    for(let b=0;b<5;b++){
+      setTimeout(()=>spawnFirework(container, colors), b*280);
+    }
+  }
+  setTimeout(()=>container.remove(), big ? 4400 : 3200);
+}
+
+function spawnFirework(container, colors){
+  const x = 12 + Math.random()*76;
+  const y = 12 + Math.random()*45;
+  const color = colors[Math.floor(Math.random()*colors.length)];
+  for(let i=0;i<26;i++){
+    const spark = document.createElement('div');
+    spark.className='firework-spark';
+    const angle = (i/26)*2*Math.PI;
+    const dist = 60+Math.random()*40;
+    spark.style.left = x+'vw';
+    spark.style.top = y+'vh';
+    spark.style.background = color;
+    spark.style.color = color;
+    spark.style.setProperty('--dx', (Math.cos(angle)*dist)+'px');
+    spark.style.setProperty('--dy', (Math.sin(angle)*dist)+'px');
+    container.appendChild(spark);
+    setTimeout(()=>spark.remove(), 950);
+  }
+}
+
+function showToast(msg){
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(), 400); }, 3400);
+}
+
+function bumpStreak(){
+  const el = document.getElementById('streakNum');
+  el.classList.remove('bump');
+  void el.offsetWidth; // restart animation
+  el.classList.add('bump');
+}
+
+
+/* ============================= CALENDAR GRID ============================= */
+const monthGrid = [
+  [{d:29,m:6},{d:30,m:6},{d:1,m:7},{d:2,m:7},{d:3,m:7},{d:4,m:7},{d:5,m:7}],
+  [{d:6,m:7},{d:7,m:7},{d:8,m:7},{d:9,m:7},{d:10,m:7},{d:11,m:7},{d:12,m:7}],
+  [{d:13,m:7},{d:14,m:7},{d:15,m:7},{d:16,m:7},{d:17,m:7},{d:18,m:7},{d:19,m:7}],
+  [{d:20,m:7},{d:21,m:7},{d:22,m:7},{d:23,m:7},{d:24,m:7},{d:25,m:7},{d:26,m:7}]
+];
+
+const weekheadsEl = document.getElementById('weekheads');
+WEEKDAY_VN.forEach(w=>{ const el=document.createElement('div'); el.className='wk-head'; el.textContent=w; weekheadsEl.appendChild(el); });
+
+const legendEl = document.getElementById('legend');
+Object.keys(PHASES).forEach(key=>{
+  const p = PHASES[key];
+  const el = document.createElement('div'); el.className='legend-item';
+  el.innerHTML = `<span class="dot" style="background:${p.hex}"></span>${p.name}`;
+  legendEl.appendChild(el);
+});
+(function(){
+  const el = document.createElement('div'); el.className='legend-item';
+  el.innerHTML = `<span class="dot" style="background:#DC2626"></span>🔴 Số thẻ bắt buộc ôn hôm đó (quá hạn cộng dồn)`;
+  legendEl.appendChild(el);
+})();
+
+const calEl = document.getElementById('calendar');
+
+function renderCalendar(){
+  calEl.innerHTML = '';
+  monthGrid.flat().forEach(cell=>{
+    const dayDiv = document.createElement('div');
+    const info = (cell.m===7) ? DATA[cell.d] : null;
+    const due = info ? dueCardsForDate(cell.d).length : 0;
+    dayDiv.className = 'day' + (info ? ' active' : ' dim') + (cell.d===selectedDate && cell.m===7 ? ' selected':'') + (info && info.phase==='exam' ? ' exam':'') + (due>0 ? ' hasdue':'');
+
+    if(info){
+      const phase = PHASES[info.phase];
+      const badge = due>0 ? `<span class="srs-badge">🔴${due}</span>` : (completedDates[cell.d] ? `<span class="done-badge">✅</span>` : '');
+      dayDiv.innerHTML = `<div class="bar" style="background:${phase.hex}"></div>
+        <div class="num">${cell.d}</div>${badge}` +
+        info.chips.map(c=>`<span class="chip" style="background:${phase.tint}">${c}</span>`).join('');
+      dayDiv.addEventListener('click', ()=>{ selectedDate = cell.d; session=null; renderCalendar(); renderDetail(); });
+    } else {
+      let note = (cell.m===7 && cell.d===23) ? '🎉 Xả hơi sau thi!' : '';
+      dayDiv.innerHTML = `<div class="num">${cell.d}</div>` + (note ? `<div class="note">${note}</div>` : '');
+    }
+    calEl.appendChild(dayDiv);
+  });
+  document.getElementById('streakNum').textContent = computeStreak();
+  renderStat();
+}
+
+function renderStat(){
+  const totalCards = CARDS.length;
+  const totalDueToday = dueCardsForDate(selectedDate).length;
+  document.getElementById('srsStat').textContent = `📚 ${totalCards} thẻ trong hệ thống · ${totalDueToday} thẻ bắt buộc hôm ${selectedDate}/07`;
+}
+
+/* ============================= DETAIL PANEL ============================= */
+function renderDetail(){
+  const info = DATA[selectedDate];
+  const phase = PHASES[info.phase];
+  const detailEl = document.getElementById('detail');
+  detailEl.style.borderLeftColor = phase.hex;
+  const due = dueCardsForDate(selectedDate);
+
+  detailEl.innerHTML = `
+    <div class="detail-head">
+      <span class="detail-date">${selectedDate}/07 · ${info.wd}</span>
+      <span class="detail-phase" style="background:${phase.hex}">${phase.name}</span>
+    </div>
+    <p class="detail-sub">Hoàn thành toàn bộ thẻ bắt buộc trước khi qua nhiệm vụ khác — đây là phần quan trọng nhất để nhớ bài lâu dài.</p>
+    <div id="mandatoryZone"></div>
+    <div class="mit-title">4 Most Important Tasks</div>
+    <ul class="mit-list" id="mitlist"></ul>
+    <div class="srs-section" id="srsSection"></div>
+  `;
+
+  const mz = document.getElementById('mandatoryZone');
+  if(due.length>0){
+    mz.innerHTML = `<div class="mandatory">
+      <div class="mtitle">🔴 BẮT BUỘC HÔM NAY — ${due.length} thẻ đến hạn / quá hạn</div>
+      <div class="msub">Đây không phải nhiệm vụ tùy chọn. Thẻ quá hạn sẽ tiếp tục hiện ở các ngày sau cho đến khi bạn ôn xong. Cuộn xuống mục "Phiên ôn tập" bên dưới để bắt đầu ngay.</div>
+    </div>`;
+  } else {
+    mz.innerHTML = `<div class="mandatory-done"><div class="mtitle">✅ Đã hoàn thành ôn tập bắt buộc cho ngày này</div></div>`;
+  }
+
+  const list = document.getElementById('mitlist');
+  const effectiveTasks = getEffectiveTasksForDay(selectedDate);
+  const mitTitleEl = detailEl.querySelector('.mit-title');
+  const backlogCount = effectiveTasks.filter(t=>t.backlog).length;
+  mitTitleEl.textContent = backlogCount>0
+    ? `Nhiệm vụ hôm nay (${effectiveTasks.length} — gồm ${backlogCount} việc tồn đọng dồn từ ngày trước)`
+    : `4 Most Important Tasks`;
+
+  effectiveTasks.forEach((task)=>{
+    const key = task.day+'-'+task.idx;
+    const li = document.createElement('li');
+    li.className = 'mit-item' + (doneState[key] ? ' done' : '');
+    const backlogTag = task.backlog ? `<span class="backlog-tag">⏪ từ ${task.day}/07</span> ` : '';
+    li.innerHTML = `<span class="mit-box">✓</span><span class="mit-text">${backlogTag}${task.text}</span>`;
+    li.addEventListener('click', async ()=>{
+      const wasAllDone = mitAllDone(selectedDate);
+      doneState[key] = !doneState[key];
+      await saveDone();
+      const isAllDone = mitAllDone(selectedDate);
+      if(!wasAllDone && isAllDone){
+        celebrate(false);
+        showToast('🎉 Hoàn thành hết nhiệm vụ hôm nay!');
+      }
+      await checkDayComplete(selectedDate);
+      renderCalendar();
+      renderDetail();
+    });
+    list.appendChild(li);
+  });
+
+  renderSrsSection();
+  renderReminderBanner();
+}
+
+function shuffleArr(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function renderSrsSection(){
+  const el = document.getElementById('srsSection');
+  const due = dueChaptersFor(selectedDate);
+
+  if (session && session.date === selectedDate) { renderFlashcardSession(el); return; }
+
+  if (due.length === 0) {
+    el.innerHTML = `<div class="srs-head"><span class="mit-title">🔁 Phiên ôn tập Spaced Repetition</span></div>
+      <p class="no-due">Không có thẻ nào đến hạn hôm nay — bạn đã theo kịp lịch! 🎉</p>`;
+    return;
+  }
+
+  let html = `<div class="srs-head"><span class="mit-title">🔁 Phiên ôn tập Spaced Repetition</span><span class="due-pill">${due.length} chương — bắt buộc</span></div>`;
+  due.forEach(ch=>{
+    const cards = cardsForSession(selectedDate, ch);
+    const boxDist = {}; cards.forEach(c=>{ boxDist[cardState[c.id].box] = (boxDist[cardState[c.id].box]||0)+1; });
+    const boxTxt = Object.keys(boxDist).sort().map(b=>`box${b}:${boxDist[b]}`).join(' · ');
+    html += `<div class="chapter-due">
+      <div><div class="cname">${CHAPTERS[ch]}</div><div class="cn">${cards.length} thẻ cần ôn <span class="box-dist">(${boxTxt})</span></div></div>
+      <button class="btn btn-srs" data-ch="${ch}">Bắt đầu ▸</button>
+    </div>`;
+  });
+  el.innerHTML = html;
+  el.querySelectorAll('button[data-ch]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const ch = parseInt(btn.getAttribute('data-ch'));
+      const cards = cardsForSession(selectedDate, ch);
+      startSession(ch, cards);
+      renderSrsSection();
+    });
+  });
+}
+
+function startSession(chapter, cardsList){
+  session = {
+    date: selectedDate, chapter,
+    round: 1,
+    cards: shuffleArr(cardsList),   // thẻ của VÒNG hiện tại
+    idx: 0, flipped: false,
+    masteredIds: [],                // đã nhớ, gạt sang 1 bên (toàn phiên)
+    wrongThisRound: [],             // chưa nhớ trong vòng này -> thành thẻ của vòng kế tiếp
+    totalCards: cardsList.length,   // tổng số thẻ gốc, để tính % tiến độ
+    originalCards: cardsList        // lưu lại để có thể "Ôn lại từ đầu" mà không cần tính lại due-cards
+  };
+}
+
+function renderFlashcardSession(el){
+  // Hết 1 vòng: kiểm tra có thẻ "chưa nhớ" nào cần đưa sang vòng mới không
+  if (session.idx >= session.cards.length) {
+    if (session.wrongThisRound.length > 0) {
+      const justFinishedRound = session.round;
+      const nextRoundCount = session.wrongThisRound.length;
+      session.round++;
+      session.cards = shuffleArr(session.wrongThisRound);
+      session.wrongThisRound = [];
+      session.idx = 0;
+      session.flipped = false;
+      showToast(`🔁 Xong vòng ${justFinishedRound}! Bắt đầu vòng ${session.round}: ôn lại ${nextRoundCount} thẻ chưa nhớ.`);
+      renderFlashcardSession(el);
+      return;
+    }
+    // Không còn thẻ nào chưa nhớ -> toàn bộ deck đã được ghi nhớ trong phiên này
+    el.innerHTML = `
+      <div class="srs-head"><span class="mit-title">🔁 Phiên ôn tập — ${CHAPTERS[session.chapter]}</span><span class="due-pill" style="background:#7C3AED;">Hoàn tất sau ${session.round} vòng</span></div>
+      <div class="fc-panel">
+        <div class="fc-done">
+          <div class="big">🎉</div>
+          <p>Đã thuộc <b>${session.masteredIds.length}/${session.totalCards}</b> thẻ sau <b>${session.round}</b> vòng ôn tập.</p>
+          <p style="font-size:12.5px;color:var(--muted);">Thẻ nào bạn từng bấm "chưa nhớ" đã được ôn lại nhiều lần liên tiếp ngay trong phiên này cho đến khi thuộc hẳn.</p>
+          <div class="fc-actions">
+            <button class="btn btn-srs" id="fcRestart">🔄 Ôn lại từ đầu ngay</button>
+            <button class="btn btn-ghost" id="fcClose">Đóng phiên ôn tập</button>
+          </div>
+        </div>
+      </div>`;
+    document.getElementById('fcRestart').addEventListener('click', ()=>{
+      startSession(session.chapter, session.originalCards);
+      renderSrsSection();
+    });
+    document.getElementById('fcClose').addEventListener('click', async ()=>{
+      session=null;
+      await checkDayComplete(selectedDate);
+      renderCalendar();
+      renderDetail();
+    });
+    return;
+  }
+
+  const card = session.cards[session.idx];
+  const box = cardState[card.id].box;
+  const doneCount = session.masteredIds.length;
+  el.innerHTML = `
+    <div class="srs-head"><span class="mit-title">🔁 Phiên ôn tập — ${CHAPTERS[session.chapter]}</span><span class="due-pill" style="background:#7C3AED;">Vòng ${session.round}</span></div>
+    <div class="fc-panel">
+      <div class="fc-progress">
+        <span>Vòng ${session.round} — thẻ ${session.idx+1}/${session.cards.length}</span>
+        <span>Đã thuộc: ${doneCount}/${session.totalCards} · Còn lại vòng này: ${session.cards.length - session.idx}</span>
+      </div>
+      <div class="fc-card" id="fcCard">
+        <span class="tag">${session.flipped ? 'Đáp án' : 'Câu hỏi — click để lật'}</span>
+        <span class="boxtag">box ${box}</span>
+        <div>${session.flipped ? card.b : card.f}</div>
+      </div>
+      <div class="fc-hint">${session.flipped ? 'Bạn có nhớ đúng không?' : 'Click vào thẻ để xem đáp án'}</div>
+      <div class="fc-actions" id="fcActions"></div>
+      <div style="text-align:center;margin-top:10px;"><button class="btn btn-ghost" id="fcExit" style="font-size:11.5px;padding:5px 12px;">Dừng ôn tập giữa chừng</button></div>
+    </div>
+  `;
+  const cardEl = document.getElementById('fcCard');
+  const actionsEl = document.getElementById('fcActions');
+
+  document.getElementById('fcExit').addEventListener('click', async ()=>{
+    session=null;
+    await checkDayComplete(selectedDate);
+    renderCalendar();
+    renderDetail();
+  });
+
+  if (!session.flipped) {
+    cardEl.addEventListener('click', ()=>{ session.flipped = true; renderSrsSection(); });
+  } else {
+    actionsEl.innerHTML = `<button class="btn btn-bad" id="fcBad">😵 Chưa nhớ (ôn lại ngay vòng sau)</button>
+                            <button class="btn btn-good" id="fcGood">✅ Đã nhớ (gạt sang một bên)</button>`;
+    document.getElementById('fcBad').addEventListener('click', async ()=>{
+      session.wrongThisRound.push(card.id);
+      await markCard(card, session.date, false);
+      session.idx++; session.flipped = false;
+      renderCalendar(); renderSrsSection();
+    });
+    document.getElementById('fcGood').addEventListener('click', async ()=>{
+      if(!session.masteredIds.includes(card.id)) session.masteredIds.push(card.id);
+      await markCard(card, session.date, true);
+      session.idx++; session.flipped = false;
+      renderCalendar(); renderSrsSection();
+    });
+  }
+}
+
+/* ============================= INIT ============================= */
+function renderStorageNote(){
+  const el = document.getElementById('storageNote');
+  el.style.display = 'block';
+  if (storageMode === 'cloud') {
+    el.style.borderColor = '#BFE3D0'; el.style.background = '#EAF7EE'; el.style.color = '#0F6B31';
+    el.innerHTML = `☁️ <b>Đang lưu qua Claude (window.storage)</b> — tiến độ sẽ giữ nguyên mỗi khi bạn mở lại cuộc trò chuyện này trong Claude.ai.`;
+  } else if (storageMode === 'local') {
+    el.style.borderColor = '#BFD4F0'; el.style.background = '#EAF0FC'; el.style.color = '#1D3A66';
+    el.innerHTML = `💾 <b>Đang lưu bằng localStorage của trình duyệt này</b> — tiến độ (streak, MIT đã tick, thẻ đã ôn) sẽ giữ nguyên khi bạn tải lại TRANG NÀY, miễn là bạn mở lại đúng file này trên đúng trình duyệt (không dùng chế độ ẩn danh / không xóa dữ liệu duyệt web). Nếu đổi trình duyệt khác hoặc máy khác, tiến độ sẽ không đồng bộ theo.`;
+  } else {
+    el.style.borderColor = '#F3B4B4'; el.style.background = '#FDEAEA'; el.style.color = '#7A2020';
+    el.innerHTML = `⚠️ <b>Trình duyệt đang chặn lưu trữ</b> (có thể do chế độ ẩn danh hoặc cài đặt riêng tư) — tiến độ sẽ MẤT khi tải lại trang. Hãy thử mở file bằng chế độ duyệt web thông thường (không ẩn danh) để dữ liệu được lưu lại.`;
+  }
+}
+
+function computeTodayJulyDay(){
+  const now = new Date();
+  if (now.getFullYear() === 2026 && now.getMonth() === 6) { // tháng 6 = July (0-indexed)
+    const d = now.getDate();
+    if (d >= 3 && d <= 22) return d;
+    if (d < 3) return 4;
+    return 22;
+  }
+  return 4; // fallback nếu đồng hồ máy không khớp tháng 7/2026
+}
+
+/* ============================= REMINDER / NOTIFICATION ============================= */
+async function requestNotifPermission(){
+  if(!('Notification' in window)){ showToast('⚠️ Trình duyệt không hỗ trợ thông báo.'); return; }
+  if(Notification.permission === 'granted'){ renderReminderBanner(); showToast('🔔 Thông báo đã được bật sẵn.'); return; }
+  if(Notification.permission === 'denied'){ showToast('⚠️ Bạn đã chặn thông báo cho trang này — hãy bật lại trong cài đặt trình duyệt.'); return; }
+  const perm = await Notification.requestPermission();
+  if(perm === 'granted'){ showToast('🔔 Đã bật thông báo nhắc nhở!'); checkAndNotifyToday(true); }
+  renderReminderBanner();
+}
+
+function pendingCountForToday(){
+  const today = computeTodayJulyDay();
+  const tasks = getEffectiveTasksForDay(today);
+  const incompleteMit = tasks.filter(t=>!doneState[t.day+'-'+t.idx]).length;
+  const dueSrs = dueCardsForDate(today).length;
+  return { today, incompleteMit, dueSrs, total: incompleteMit + dueSrs };
+}
+
+function checkAndNotifyToday(force){
+  const { today, incompleteMit, dueSrs, total } = pendingCountForToday();
+  if(total===0) return;
+  if('Notification' in window && Notification.permission === 'granted'){
+    new Notification('📚 Nhắc ôn thi Microeconometrics', {
+      body: `Hôm nay ${today}/07: còn ${incompleteMit} nhiệm vụ MIT + ${dueSrs} thẻ SRS chưa hoàn thành!`
+    });
+  } else if (force) {
+    showToast('🔕 Chưa bật thông báo trình duyệt — bấm nút "Bật thông báo" ở trên để nhận nhắc nhở.');
+  }
+}
+
+function renderReminderBanner(){
+  const el = document.getElementById('reminderBanner');
+  const { today, incompleteMit, dueSrs, total } = pendingCountForToday();
+  const permStatus = ('Notification' in window) ? Notification.permission : 'unsupported';
+  let btnHtml = '';
+  if (permStatus === 'granted') {
+    btnHtml = `<span class="notif-status">🔔 Đã bật thông báo</span>`;
+  } else if (permStatus === 'unsupported') {
+    btnHtml = `<span class="notif-status">⚠️ Trình duyệt không hỗ trợ</span>`;
+  } else {
+    btnHtml = `<button class="btn btn-srs" id="btnEnableNotif">🔔 Bật thông báo nhắc nhở</button>`;
+  }
+  if (total === 0) {
+    el.innerHTML = `<div class="reminder-ok">✅ <b>Hôm nay ${today}/07:</b> bạn đã hoàn thành hết nhiệm vụ + thẻ ôn tập bắt buộc. Tuyệt vời!</div>`;
+  } else {
+    el.innerHTML = `
+      <div class="reminder-warn">
+        <div class="rtxt">📢 <b>Hôm nay ${today}/07:</b> còn <b>${incompleteMit}</b> nhiệm vụ MIT và <b>${dueSrs}</b> thẻ SRS chưa hoàn thành.</div>
+        ${btnHtml}
+      </div>`;
+  }
+  const btn = document.getElementById('btnEnableNotif');
+  if(btn) btn.addEventListener('click', requestNotifPermission);
+}
+
+(async function init(){
+  await detectStorageMode();
+  renderStorageNote();
+  await loadState();
+  CARDS.forEach(ensureCard);
+  selectedDate = computeTodayJulyDay();
+  renderCalendar();
+  renderDetail();
+  // Kiểm tra lại định kỳ mỗi giờ (chỉ khi tab vẫn đang mở) và nhắc qua Notification nếu còn thiếu
+  setInterval(()=>{ checkAndNotifyToday(false); renderReminderBanner(); }, 60*60*1000);
+})();
+</script>
+</body>
+</html>
